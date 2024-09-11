@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Universal Web Scraper</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Universal Web Scraper</h1>
+        <form action="/scrape" method="POST">
+            <div class="form-group">
+                <label for="url">Enter the URL:</label>
+                <input type="text" id="url" name="url" required>
+            </div>
+
+            <div class="form-group">
+                <label for="file_type">Choose file format:</label>
+                <select id="file_type" name="file_type">
+                    <option value="csv">CSV</option>
+                    <option value="pdf">PDF</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <button type="submit">Scrape Data</button>
+            </div>
+        </form>
+
+        <!-- Error Message Section -->
+        {% if error %}
+        <div class="error-message">
+            <p>{{ error }}</p>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
